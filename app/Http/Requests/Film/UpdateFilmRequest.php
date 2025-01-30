@@ -12,7 +12,7 @@ class UpdateFilmRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,8 @@ class UpdateFilmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titre' => 'required|string|max:255',
-            'description' => 'nullable|string|max:1005',
+            'title' => 'required|string|max:255',
+            'overview' => 'nullable|string|max:1005',
         ];
     }
 
@@ -36,11 +36,11 @@ class UpdateFilmRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'titre.required' => 'Le champ titre est obligatoire',
-            'titre.string' => 'Le champ titre doit être une chaîne de caractères',
-            'titre.max' => 'Le champ titre ne doit pas dépasser 255 caractères',
-            'description.string' => 'Le champ description doit être une chaîne de caractères',
-            'description.max' => 'Le champ description ne doit pas dépasser 1005 caractères',
+            'title.required' => 'Le champ titre est obligatoire',
+            'title.string' => 'Le champ titre doit être une chaîne de caractères',
+            'title.max' => 'Le champ titre ne doit pas dépasser 255 caractères',
+            'overview.string' => 'Le champ description doit être une chaîne de caractères',
+            'overview.max' => 'Le champ description ne doit pas dépasser 1005 caractères',
         ];
     }
 }
