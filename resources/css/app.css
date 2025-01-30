@@ -1,7 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 [x-cloak] {
     display: none;
+}
+
+@theme {
+    --color-black: #0d0c10;
 }
