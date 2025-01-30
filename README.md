@@ -99,3 +99,9 @@ To run the command automatically, you can schedule it inside app/Console/Kernel.
 
 ### ✅ Your Laravel project is now set up! 🎉
 
+## License & Copyright
+
+© 2025 Reda. All rights reserved.
+
+This project and its source code are the intellectual property of Reda.  
+The project is licensed under the [MIT License](LICENSE.md).
