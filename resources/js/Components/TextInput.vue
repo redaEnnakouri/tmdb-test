@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 
 defineProps({
     modelValue: String,
+    multiline: Number,
 });
 
 defineEmits(['update:modelValue']);
@@ -19,10 +20,12 @@ defineExpose({ focus: () => input.value.focus() });
 </script>
 
 <template>
-    <input
+    <component
+        :is="multiline ? 'textarea' : 'input'"
         ref="input"
         class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
         :value="modelValue"
+        :rows="multiline"
         @input="$emit('update:modelValue', $event.target.value)"
-    >
+    />
 </template>
