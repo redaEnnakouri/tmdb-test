@@ -1,11 +1,11 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue';
-import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue';
-import SectionBorder from '@/Components/SectionBorder.vue';
-import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
-import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
-import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
+import AppLayout from '@/layouts/AppLayout.vue';
+import DeleteUserForm from '@/pages/profile/partials/DeleteUserForm.vue';
+import LogoutOtherBrowserSessionsForm from '@/pages/profile/partials/LogoutOtherBrowserSessionsForm.vue';
+import SectionBorder from '@/components/SectionBorder.vue';
+import TwoFactorAuthenticationForm from '@/pages/profile/partials/TwoFactorAuthenticationForm.vue';
+import UpdatePasswordForm from '@/pages/profile/partials/UpdatePasswordForm.vue';
+import UpdateProfileInformationForm from '@/pages/profile/partials/UpdateProfileInformationForm.vue';
 
 defineProps({
     confirmsTwoFactorAuthentication: Boolean,
