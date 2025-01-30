@@ -27,9 +27,9 @@ class UpdateOrCreateFilmAction
                 'media_type' => $attributes['media_type'] ?? null,
                 'original_language' => $attributes['original_language'] ?? null ,
                 'adult' => $attributes['adult'] ,
-                'backdrop_path' => $attributes['backdrop_path'] ?? null,
+                'backdrop_path' =>isset($attributes['backdrop_path']) ? "https://image.tmdb.org/t/p/w500{$attributes['backdrop_path']}" : null,
                 'release_date' => $attributes['release_date'] ?? null,
-                'poster_path' => $attributes['poster_path'] ?? null,
+                'poster_path' => isset($attributes['poster_path']) ?"https://image.tmdb.org/t/p/w500{$attributes['poster_path']}" : null,
                 'vote_average' => $attributes['vote_average'] ?? 0,
                 'vote_count' => $attributes['vote_count']?? 0]
         );
