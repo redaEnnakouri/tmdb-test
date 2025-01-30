@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Inertia\Film\FilmController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,3 +34,15 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+
+Route::prefix('films')->name('films.')
+    ->controller(FilmController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::prefix('{film}')->group(function () {
+            Route::get('show', 'show')->name('show');
+            Route::get('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+            Route::delete('destroy', 'destroy')->name('destroy');
+        });
+    });
