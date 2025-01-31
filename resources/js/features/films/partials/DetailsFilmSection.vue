@@ -32,7 +32,7 @@
                             🗓 Release Date: {{ film.release_date }}
                         </li>
                         <li class="px-4 py-2 bg-black rounded-lg text-sm w-fit">
-                            🌍 Language: {{ film.original_language.toUpperCase() }}
+                            🌍 Language: {{ film.original_language?.toUpperCase() }}
                         </li>
 
                         <li class="px-4 py-2 bg-black rounded-lg text-sm w-fit">💬 Votes: {{ film.vote_count }}</li>
