@@ -15,7 +15,7 @@ class StoreFilmsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:mis-a-jour-films';
+    protected $signature = 'fetch:movies';
 
     /**
      * The console command description.
