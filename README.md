@@ -46,9 +46,17 @@ Update .env with your database credentials:
     DB_PASSWORD=your_password
 
 
-## Run Migrations & Seeders
+## Run Migrations & Seeders 
 
     php artisan migrate --seed
+
+### If you are using Laravel Sail:
+
+    ./vendor/bin/sail artisan migrate --seed
+
+#### Note: The seeders will create a user with the following credentials:
+- Email: test@example.com
+- Password: password
 
 ## Run the Application
 
