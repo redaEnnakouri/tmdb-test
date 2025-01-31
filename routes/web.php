@@ -17,32 +17,22 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    return redirect()->route('login');
 });
 
 
-Route::prefix('films')->name('films.')
-    ->controller(FilmController::class)->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::prefix('{film}')->group(function () {
-            Route::get('show', 'show')->name('show');
-            Route::get('edit', 'edit')->name('edit');
-            Route::put('update', 'update')->name('update');
-            Route::delete('destroy', 'destroy')->name('destroy');
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::prefix('films')->name('films.')
+        ->controller(FilmController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::prefix('{film}')->group(function () {
+                Route::get('show', 'show')->name('show');
+                Route::get('edit', 'edit')->name('edit');
+                Route::put('update', 'update')->name('update');
+                Route::delete('destroy', 'destroy')->name('destroy');
+            });
         });
-    });
+});
+
+
