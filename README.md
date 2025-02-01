@@ -1,3 +1,4 @@
+![Screen Recording](https://github.com/redaEnnakouri/tmdb-test/blob/staging/resources/assets/images/ScreenRecording.gif?raw=true)
 
 ## Project Setup Guide  🚀
 
