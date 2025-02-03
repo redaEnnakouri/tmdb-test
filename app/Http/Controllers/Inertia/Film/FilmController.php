@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Inertia\Film;
 
 use App\Actions\Films\DestroyFilmsAction;
 use App\Actions\Films\GetAllFilmsAction;
+use App\Actions\Films\GetFilmsAction;
 use App\Actions\Films\UpdateFilmAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Film\UpdateFilmRequest;
@@ -30,12 +31,13 @@ class FilmController extends Controller
 
     /**
      * @param Film $film
+     * @param GetFilmsAction $action
      * @return Response
      */
-    public function show(Film $film)
+    public function show(Film $film,GetFilmsAction $action)
     {
         return Inertia::render('features/films/DetailFilmPage', [
-            'film' => $film,
+            'film' => $action::execute($film),
         ]);
     }
 
