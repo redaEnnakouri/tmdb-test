@@ -87,11 +87,11 @@ Add your API key to the .env file:
 
 if you want to fetch the movies from the API, you can run the following command:
 
-    php artisan fetch:movies
+    php artisan fetch:movies --pages=limit of pages to fetch (optional)
 
 if you are using Laravel Sail, you can run the command inside the container:
 
-    ./vendor/bin/sail artisan fetch:movies
+    ./vendor/bin/sail artisan fetch:movies --pages=limit of pages to fetch (optional)
 
 ### How It Works
 - The command fetches data from the external API using the configured API key.

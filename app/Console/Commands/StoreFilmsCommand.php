@@ -17,7 +17,7 @@ class StoreFilmsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'fetch:movies';
+    protected $signature = 'fetch:movies {--pages= : number de pages à traiter}';
 
     /**
      * The console command description.
@@ -38,7 +38,8 @@ class StoreFilmsCommand extends Command
             $this->info('Mise à jour des films dans la base de données');
             $page = 1; // Start with the first page
             $totalPages = 500;
-            $progress = $this->output->createProgressBar($totalPages);
+            $maxPages = $this->option('pages') ? (int)$this->option('pages') : $totalPages; // Use --pages option if provided
+            $progress = $this->output->createProgressBar($maxPages);
             $progress->start();
 
             while (true) {
@@ -65,7 +66,7 @@ class StoreFilmsCommand extends Command
 
                 });
 
-                if ($page >= $totalPages) {
+                if ($page >= $totalPages || $page >= $maxPages) {
                     break;
                 }
                 $progress->advance();
