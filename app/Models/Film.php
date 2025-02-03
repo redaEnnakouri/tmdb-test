@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Film extends Model
 {
@@ -28,4 +29,13 @@ class Film extends Model
     protected $casts = [
         'adult' => 'boolean',
     ];
+
+
+    /**
+     * @return HasOne
+     */
+    public function filmDetail(): HasOne
+    {
+        return $this->hasOne(FilmDetail::class);
+    }
 }
