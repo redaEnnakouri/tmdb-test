@@ -25,7 +25,7 @@ return new class extends Migration {
             $table->boolean('adult')->default(false);
             $table->float('vote_average')->default(0);
             $table->integer('vote_count')->default(0);
-            $table->string('status')->default(StatusEnum::ACTIVE);
+            $table->string('status')->default(StatusEnum::ACTIVE->value);
             $table->timestamps();
         });
     }
