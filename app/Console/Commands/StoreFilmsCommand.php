@@ -2,10 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Actions\Films\Details\UpdateOrCreateFilmDetailsAction;
 use App\Actions\Films\UpdateOrCreateFilmAction;
 use App\Services\Api\Tmdb\TmdbService;
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class StoreFilmsCommand extends Command
@@ -42,17 +44,26 @@ class StoreFilmsCommand extends Command
             while (true) {
                 $api = new (TmdbService::class);
                 $data = $api->get([
-                    'url' => 'https://api.themoviedb.org/3/trending/all/day?language=en-US',
+                    'url' => 'https://api.themoviedb.org/3/trending/all/day',
                     'page' => $page
                 ]);
 
                 $movies = $data['results'] ?? [];
                 $totalPages = $data['total_pages'] ?? 1;
 
-                // Store movies in the database
-                foreach ($movies as $movie) {
-                    UpdateOrCreateFilmAction::execute($movie);
-                }
+                // Store movies and details in the database
+                collect($movies)->each(function ($movie) use ($api) {
+                    $film = UpdateOrCreateFilmAction::execute($movie);
+
+                    // Store each movie details in the database
+                    $details = $api->get([
+                        'url' => 'https://api.themoviedb.org/3/movie/' . $movie['id'],
+                    ]);
+
+                    if(isset($details))
+                        UpdateOrCreateFilmDetailsAction::execute($film, Arr::only($details, ['runtime', 'status', 'tagline']));
+
+                });
 
                 if ($page >= $totalPages) {
                     break;
