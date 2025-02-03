@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Film;
-use App\Models\FilmGender;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

@@ -20,9 +20,11 @@ class GetAllFilmsAction
                 $query->where(function ($query) use ($attributes) {
                     $query->where('title', 'like', '%' . $attributes['search'] . '%')
                         ->orWhere('original_title', 'like', '%' . $attributes['search'] . '%')
-                        ->orWhere('overview', 'like', '%' . $attributes['search'] . '%');
+                        ->orWhere('overview', 'like', '%' . $attributes['search'] . '%')
+                        ->orWhereRelation('filmDetail', 'tagline', 'like', '%' . $attributes['search'] . '%');
                 });
             })
+            ->isActive()
             ->paginate();
     }
 }
