@@ -106,6 +106,12 @@ To run the command automatically, you can schedule it inside app/Console/Kernel.
         $schedule->command(StoreFilmsCommand::class)->daily();
     }
 
+### Running the Unit Tests
+To run the unit tests, use the following command:
+        
+    php artisan test
+
+
 ### ✅ Your Laravel project is now set up! 🎉
 
 ## License & Copyright
